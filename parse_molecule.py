@@ -35,7 +35,7 @@ def parse_molecule(chemical_formula):
         # Iterating through the chemical formula.
 
         if chemical_formula[main_index] in opening_brackets:  # Beginning of a subformula.
-            subformulas_list.append(collections.Counter())  # Adding a subformula to the subformulas list
+            subformulas_list.append(collections.Counter())  # Adding a new subformula to the subformulas list
             main_index += 1
 
         elif chemical_formula[main_index] in closing_brackets:  # End of a subformula.
@@ -47,10 +47,11 @@ def parse_molecule(chemical_formula):
                 # Parsing the multiplicity of the subformula.
                 main_index += 1
 
+            # Default multiplicity is 1.
             multiplicity = int(chemical_formula[temp_index_start: main_index] or 1)
 
             for atom_name, atom_count in subformula.items():
-                # Applying multiplicity to each atom in the subformula.
+                # Applying multiplicity to each atom of the subformula.
                 subformulas_list[-1][atom_name] += atom_count * multiplicity
 
         else:  # Parsing an atom.
@@ -68,6 +69,7 @@ def parse_molecule(chemical_formula):
                 # Parsing the multiplicty of the atom.
                 main_index += 1
 
+            # Default multiplicity is 1.
             multiplicity = int(chemical_formula[temp_index_start: main_index] or 1)
 
             # Adding the mulitiplicity of the atom to the subformula's Counter.
