@@ -2,6 +2,10 @@
 import collections
 from pprint import pprint
 
+water = 'H2O'
+magnesium_hydroxide = 'Mg(OH)2'
+fremy_salt = 'K4[ON(SO3)2]2'
+
 
 def parse_molecule(chemical_formula):
     """
@@ -70,4 +74,11 @@ def parse_molecule(chemical_formula):
             subformulas_list[-1][atom_name] += multiplicity
 
     return subformulas_list[-1]
+
+
+if __name__ == '__main__':
+    pprint(parse_molecule(water))
+    pprint(parse_molecule(magnesium_hydroxide))
+    pprint(parse_molecule(fremy_salt))
+
 
