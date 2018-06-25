@@ -20,6 +20,11 @@ Install the requirement (pytest):
 pip install -r requirements.txt
 ```
 
+Run the program:
+```sh
+python parse_molecule.py
+```
+
 Launch unit tests:
 ```
 py.test tests.py
